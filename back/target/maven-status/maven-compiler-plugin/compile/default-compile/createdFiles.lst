@@ -1,0 +1,8 @@
+resteasycrud\service\UserService.class
+Banco\BancodeDados.class
+resteasycrud\model\User.class
+resteasycrud\model\Endereco.class
+resteasycrud\resource\RestEasyServices.class
+Banco\testebanco.class
+resteasycrud\resource\UserResource.class
+resteasycrud\model\Telefone.class

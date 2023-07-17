@@ -1,0 +1,14 @@
+CREATE TABLE `contato` (
+  `id` integer PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) NOT NULL
+);
+
+
+INSERT INTO contato(nome ) VALUES ('Paulo');
+INSERT INTO contato (nome ) VALUES ('ana');
+INSERT INTO contato (nome ) VALUES ('ezequiel');
+INSERT INTO contato (nome ) VALUES ('humberto');
+INSERT INTO contato (nome ) VALUES ('blabla');
+
+
+select * from contato;
