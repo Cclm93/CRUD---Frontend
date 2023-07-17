@@ -1,7 +1,6 @@
 <template>
   <div class="boxvertical">
-    <button @click="sincronizar()" class="bsinc"> Sincronizar</button>  
-    <button @click="teste()" class="bsinc"> teste</button>  
+    
     <div class="boxteste">
        
         <p class="maisteste">Contador de usuários : {{ this.contadordeusers }} </p>
@@ -27,14 +26,7 @@
 
     </div>
 
-        <p> {{ this.users }}</p>
-        <br>
-        <br>
-        <p> {{ this.users[0] }}</p>
-        
-        <br>
-        <p>o tamanho recebido é : {{ this.tam }}</p>
-
+  
 
 
   </div>
@@ -48,12 +40,12 @@ import UsuarioRemovido from './Usuario-removido2';
 import Sucessocadastrodois from './Sucesso-cadastro';
 import Sucessoedicao from './Sucesso-edicao';
 import Edicaousuario from './Edicao-usuario.vue';
-//import users from '@/Service/users';
+
 
 
 export default {
 
-    props: ['users','tam'], //variáveis vindas do componente pai , App.// users = usuários vindo do BD e  tam = quantidade de usuários vindos do BD
+   
 
   components: {
     CadastroUsuariodois,
@@ -100,159 +92,6 @@ export default {
 
   methods: {
    
-    sincronizar(){
-      this.contadordeusers=this.tam
-      this.tamarraydeusers=this.tam
-
-
-          for (let i = 0; i < this.tam; i++){
-
-               // this.users[i] objeto  do usuário no formato do Backend
-
-          //      this.arraydeusers[i][0] = this.users[i].id
-                this.arraydeusers[i][1]['nome'] = this.users[i].name // Trecho responsável pela conversão do formato do Back para o formato do Front 
-                this.arraydeusers[i][1]['estadocivil']= this.users[i].estadoCivil
-                this.arraydeusers[i][1]['bairro'] = this.users[i].endereco.bairro
-                this.arraydeusers[i][1]['nacionalidade']= this.users[i].nacionalidade 
-                this.arraydeusers[i][1]['sexo'] = this.users[i].sexo
-                this.arraydeusers[i][1]['nasc']= this.users[i].nasc
-                this.arraydeusers[i][1]['ocupacao'] = this.users[i].ocupacao 
-                this.arraydeusers[i][1]['rua']= this.users[i].endereco.rua
-                this.arraydeusers[i][1]['numero']= this.users[i].endereco.numero
-                this.arraydeusers[i][1]['complemento'] = this.users[i].endereco.complemento
-                this.arraydeusers[i][1]['cidade'] = this.users[i].endereco.cidade
-                this.arraydeusers[i][1]['estado'] = this.users[i].endereco.estado
-                this.arraydeusers[i][1]['cep'] = this.users[i].endereco.cep
-                this.arraydeusers[i][1]['email'] = this.users[i].email
-                this.arraydeusers[i][1]['cpf'] =  this.users[i].cpf
-                this.arraydeusers[i][1]['cadastradoem']= this.users[i].cadastradoem
-                this.arraydeusers[i][1]['modificadoem']= this.users[i].modificadoem
-/*
-                console.log("/////////////////////////////////////////////////////////////////////////////")
-
-                console.log("o ID do usuário é : " + this.usersinc.id)
-                console.log("nome:" + this.usersinc.name)
-                console.log("estadocivil:" + this.usersinc.estadoCivil)
-                console.log("bairro:" + this.usersinc.endereco.bairro)
-                console.log("nacionalidade:" + this.usersinc.nacionalidade)
-                console.log("sexo:" + this.usersinc.sexo)
-                console.log("nasc:" + this.usersinc.ocupacao)
-                console.log("rua:" + this.usersinc.endereco.rua)
-                console.log("numero:" + this.usersinc.endereco.numero)
-                console.log("complemento:" + this.usersinc.endereco.complemento)
-                console.log("cidade:" + this.usersinc.endereco.cidade)
-                console.log("estado:" + this.usersinc.endereco.estado)
-                console.log("cep:" + this.usersinc.endereco.cep)
-                console.log("email:" + this.usersinc.email)
-                console.log("cpf:" + this.usersinc.cpf)
-                console.log("cadastradoem:" + this.usersinc.cadastradoem)
-                console.log("modificadoem:" + this.usersinc.modificadoem)
- */              
-                
-                this.qtdtelefones = Object.keys(this.usersinc.telefonesarray).length
-                this.arraytelefones= Object.values(this.usersinc.telefonesarray)
-                
-                for (let j = 0; j < this.qtdtelefones; j++){
-                 
-                  this.arraydeusers[i][1]['telefone'][j] = this.arraytelefones[j].telefone   
-
-                }   
-                
-               
-    //            console.log("elementouser atribuido à posição:" + i)
-
-
-                
- //               console.log("arraydeusers:" + this.arraydeusers)
- //               console.log("/////////////////////////////////////////////////////////////////////////////")
-                
-/*
-                this.elementouser2 = this.arraydeusers[i]
-                this.userbuffer2 = this.elementouser2[1]
-
-
-
-         console.log("chegacagem do elemento no array/////////////////////////////////////////////////////////////////////////////")
-
-              console.log("o ID do usuário é : " + this.elementouser2[0])
-              console.log("nome:" + this.userbuffer2['nome'])
-              console.log("estadocivil:" + this.userbuffer2['estadocivil'])
-              console.log("bairro:" + this.userbuffer2['bairro'])
-              console.log("nacionalidade:" + this.userbuffer2['nacionalidade'])
-              console.log("sexo:" + this.userbuffer2['sexo'])
-              console.log("nasc:" + this.userbuffer2['nasc'])
-              console.log("rua:" +this.userbuffer2['rua'])
-              console.log("numero:" + this.userbuffer2['numero'])
-              console.log("complemento:" + this.userbuffer2['complemento'])
-              console.log("cidade:" + this.userbuffer2['cidade'])
-              console.log("estado:" +this.userbuffer2['estado'])
-              console.log("cep:" + this.userbuffer2['cep'])
-              console.log("email:" +this.userbuffer2['email'])
-              console.log("cpf:" + this.userbuffer2['cpf'])
-              console.log("cadastradoem:" + this.userbuffer2['cadastradoem'])
-              console.log("modificadoem:" + this.userbuffer2['modificadoem'])
-
-*/
-          }
-
-
-         
-          /////////////////////////////////////////////////////////////teste//////////////////////////////////////////////////////////////////////////////////////////
-          for(let z = 0;z < this.tam; z ++){
-                     
-            console.log("o id do elemento na posição " + z + " é :" +  this.arraydeusers[z][0])
-
-          }
-
-
-
-
-          /////////////////////////////////////////////////////////////teste//////////////////////////////////////////////////////////////////////////////////////////
-
-
-    },
-
-
-    teste(){
-      
-      this.elementouser3 = this.arraydeusers[1]
-      this.userbuffer3 = this.elementouser3[1]
-     
-     
-      console.log("chegacagem do elemento /////////////////////////////////////////////////////////////////////////////")
-
-      console.log("o ID do usuário é : " + this.elementouser3[0])
-      console.log("nome:" + this.arraydeusers[0][1]['nome'])
-      console.log("estadocivil:" + this.userbuffer3['estadocivil'])
-      console.log("bairro:" + this.userbuffer3['bairro'])
-      console.log("nacionalidade:" + this.userbuffer3['nacionalidade'])
-      console.log("sexo:" + this.userbuffer3['sexo'])
-      console.log("nasc:" + this.userbuffer3['nasc'])
-      console.log("rua:" +this.userbuffer3['rua'])
-      console.log("numero:" + this.userbuffer3['numero'])
-      console.log("complemento:" + this.userbuffer3['complemento'])
-      console.log("cidade:" + this.userbuffer3['cidade'])
-      console.log("estado:" +this.userbuffer3['estado'])
-      console.log("cep:" + this.userbuffer3['cep'])
-      console.log("email:" +this.userbuffer3['email'])
-      console.log("cpf:" + this.userbuffer3['cpf'])
-      console.log("cadastradoem:" + this.userbuffer3['cadastradoem'])
-      console.log("modificadoem:" + this.userbuffer3['modificadoem'])
-
-      this.elementotelefone = this.userbuffer['telefone']
-      this.qtdtelefones= this.elementotelefone[0]
-      this.bufferarraytelefones = this.elementotelefone[1]
-      
-      console.log("Este usuário possui"+ this.qtdtelefones + "telefone(s). Sendo ele(s):")
-      
-      for (let j = 0; j < this.qtdtelefones; j++){
-          console.log(  (j+1) + ": " + this.arraytelefones[j].telefone)
-      }
-
-    },
-
-
-
     mostrartabela() {
       if (this.rendertabela == "true") {
         return true;
